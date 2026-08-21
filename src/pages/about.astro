@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="About — Kannada Bechdel Test" description="What the Bechdel test is and how movies on this site are scored.">
+  <section class="wrap prose">
+    <h1>About this project</h1>
+
+    <h2>What is the Bechdel test?</h2>
+    <p>
+      The Bechdel test (also called the Bechdel–Wallace test) is a simple check for the presence of
+      women in fiction, popularised by cartoonist Alison Bechdel in 1985. A work passes if it meets
+      three conditions:
+    </p>
+    <ol>
+      <li>It has at least two named women in it,</li>
+      <li>who talk to each other,</li>
+      <li>about something other than a man.</li>
+    </ol>
+    <p>
+      It's a low bar, and passing it says nothing about a film's quality or feminist credentials on
+      its own — plenty of great films fail it, and plenty of shallow ones pass. It's just one small,
+      consistent lens for looking at how women are written into (or out of) mainstream cinema.
+    </p>
+
+    <h2>How movies are chosen and scored</h2>
+    <p>
+      Each year, five prominent Kannada film releases are reviewed against the test. Scoring is done
+      manually by watching or researching the film and recording: the named female characters, whether
+      any of them have a stated job, whether they speak to each other on screen, and whether that
+      conversation is about something other than a man. Where the answer is genuinely ambiguous, it's
+      marked "Pass (likely)" or "Fail (likely)" rather than guessed at.
+    </p>
+    <p>
+      This is inherently a judgment call in places — dialogue can be brief, character intent can be
+      read differently by different viewers. Corrections and disagreements are welcome; see the link
+      below.
+    </p>
+
+    <h2>Data &amp; source</h2>
+    <p>
+      The dataset behind this site is maintained and versioned in the
+      {" "}<a href="https://github.com/deepakcb/kannada-bechdel-test" rel="noopener">GitHub repository</a>{" "}
+      for this project. Spot an error or want to suggest a film? Open an issue there.
+    </p>
+
+    <h2>Who made this</h2>
+    <p>
+      This is a project by <a href="https://bubblycharacter.in" rel="noopener">Bubbly Character</a>.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .prose {
+    max-width: 680px;
+    padding: 48px 0 60px;
+  }
+  .prose h1 { font-size: 1.8rem; margin-bottom: 8px; }
+  .prose h2 { font-size: 1.15rem; margin-top: 34px; }
+  .prose p, .prose li { color: var(--muted); font-size: 0.97rem; }
+  .prose a { color: var(--accent); }
+</style>

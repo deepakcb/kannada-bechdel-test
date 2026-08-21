@@ -1,0 +1,120 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Tracking the Bechdel test for Kannada cinema, year by year." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">ಬೆಚ್ಡೆಲ್ <span>Kannada Bechdel Test</span></a>
+        <nav>
+          <a href="/">Years</a>
+          <a href="/about/">About</a>
+          <a href="https://bubblycharacter.in" rel="noopener">Bubbly Character</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>A project by <a href="https://bubblycharacter.in" rel="noopener">Bubbly Character</a>. Data is hand-reviewed and updated periodically — see <a href="/about/">methodology</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #fdfbf6;
+    --ink: #201a14;
+    --muted: #6b6154;
+    --line: #e8e0d0;
+    --accent: #b3541e;
+    --pass-bg: #e4f2e6;
+    --pass-ink: #276b34;
+    --fail-bg: #f7e8e4;
+    --fail-ink: #a13b25;
+    --likely-bg: #fbf2df;
+    --likely-ink: #8a6414;
+    --card-bg: #ffffff;
+    --radius: 10px;
+    font-family: -apple-system, "Segoe UI", "Noto Sans Kannada", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16130f;
+      --ink: #f1ece1;
+      --muted: #a89d8a;
+      --line: #332c22;
+      --accent: #e08a4c;
+      --pass-bg: #16301d;
+      --pass-ink: #7fd493;
+      --fail-bg: #331c17;
+      --fail-ink: #f0a08c;
+      --likely-bg: #362b12;
+      --likely-ink: #edc873;
+      --card-bg: #201a14;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  a { color: inherit; }
+  .site-header {
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .brand {
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    color: var(--ink);
+  }
+  .brand span { color: var(--accent); }
+  .site-header nav { display: flex; gap: 18px; font-size: 0.92rem; }
+  .site-header nav a { text-decoration: none; color: var(--muted); }
+  .site-header nav a:hover { color: var(--accent); }
+  main { min-height: 60vh; }
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 60px;
+    padding: 24px 0 40px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .site-footer a { color: var(--muted); text-decoration: underline; }
+</style>

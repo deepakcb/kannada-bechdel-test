@@ -1,0 +1,108 @@
+---
+interface Movie {
+  title: string;
+  year: number;
+  director: string;
+  femaleCharacters: string;
+  twoNamedWomen: string;
+  atLeastOneJob: string;
+  job1: string;
+  job2: string;
+  doTheyTalk: string;
+  conversationNotAboutMan: string;
+  result: string;
+  notes: string;
+}
+interface Props {
+  movie: Movie;
+}
+const { movie } = Astro.props;
+
+const isPass = movie.result.toLowerCase().startsWith("pass");
+const isLikely = movie.result.toLowerCase().includes("likely");
+const badgeClass = isPass ? "pass" : isLikely ? "likely" : "fail";
+---
+<article class="card">
+  <div class="card-top">
+    <h3>{movie.title}</h3>
+    <span class={`badge ${badgeClass}`}>{movie.result}</span>
+  </div>
+  <p class="director">Directed by {movie.director}</p>
+  <dl>
+    <div class="row">
+      <dt>Female characters</dt>
+      <dd>{movie.femaleCharacters}</dd>
+    </div>
+    <div class="row">
+      <dt>Two named women?</dt>
+      <dd>{movie.twoNamedWomen}</dd>
+    </div>
+    <div class="row">
+      <dt>Jobs</dt>
+      <dd>{movie.job1}{movie.job2 ? `; ${movie.job2}` : ""}</dd>
+    </div>
+    <div class="row">
+      <dt>Do they talk?</dt>
+      <dd>{movie.doTheyTalk}</dd>
+    </div>
+    <div class="row">
+      <dt>Not about a man?</dt>
+      <dd>{movie.conversationNotAboutMan}</dd>
+    </div>
+  </dl>
+  {movie.notes && <p class="notes">{movie.notes}</p>}
+</article>
+
+<style>
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  h3 { margin: 0; font-size: 1.05rem; }
+  .director {
+    margin: 4px 0 14px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .badge {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge.pass { background: var(--pass-bg); color: var(--pass-ink); }
+  .badge.fail { background: var(--fail-bg); color: var(--fail-ink); }
+  .badge.likely { background: var(--likely-bg); color: var(--likely-ink); }
+  dl { margin: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px;
+    padding: 6px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.87rem;
+  }
+  .row:first-child { border-top: none; }
+  dt { color: var(--muted); margin: 0; }
+  dd { margin: 0; }
+  .notes {
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+</style>

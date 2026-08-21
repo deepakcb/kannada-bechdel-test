@@ -1,0 +1,66 @@
+---
+import Base from "../layouts/Base.astro";
+import MovieCard from "../components/MovieCard.astro";
+import movies from "../data/movies.json";
+
+const years = [...new Set(movies.map((m) => m.year))].sort((a, b) => b - a);
+const byYear = years.map((year) => ({
+  year,
+  movies: movies.filter((m) => m.year === year),
+}));
+
+const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")).length;
+---
+<Base title="Kannada Bechdel Test — Top 5 Kannada Movies by Year">
+  <section class="intro wrap">
+    <h1>Does Kannada cinema pass the Bechdel test?</h1>
+    <p>
+      Every year we pick five prominent Kannada releases and check them against the
+      <a href="/about/">Bechdel test</a>: do at least two named women talk to each other about
+      something other than a man? Here's how {movies.length} films from {years[years.length - 1]}–{years[0]} stack up.
+    </p>
+    <p class="stat"><strong>{passCount}</strong> of <strong>{movies.length}</strong> films pass.</p>
+  </section>
+
+  {byYear.map(({ year, movies: yearMovies }) => (
+    <section class="year-block wrap">
+      <h2>{year}</h2>
+      <div class="grid">
+        {yearMovies.map((movie) => <MovieCard movie={movie} />)}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .intro {
+    padding: 48px 0 8px;
+    max-width: 720px;
+  }
+  .intro h1 {
+    font-size: 1.9rem;
+    margin: 0 0 14px;
+  }
+  .intro p {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  .intro .stat {
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+  .intro .stat strong { color: var(--accent); }
+  .year-block {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+  }
+  .year-block h2 {
+    font-size: 1.4rem;
+    margin: 0 0 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+</style>
