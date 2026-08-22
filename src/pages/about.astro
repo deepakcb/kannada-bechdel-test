@@ -4,6 +4,7 @@ import Base from "../layouts/Base.astro";
 <Base title="About — Kannada Bechdel Test" description="What the Bechdel test is and how movies on this site are scored.">
   <section class="wrap prose">
     <h1>About this project</h1>
+    <p class="kn-subtitle">ಈ ಯೋಜನೆಯ ಬಗ್ಗೆ</p>
 
     <h2>What is the Bechdel test?</h2>
     <p>
@@ -21,19 +22,40 @@ import Base from "../layouts/Base.astro";
       its own — plenty of great films fail it, and plenty of shallow ones pass. It's just one small,
       consistent lens for looking at how women are written into (or out of) mainstream cinema.
     </p>
+    <p class="kn">
+      ಸರಳವಾಗಿ ಹೇಳುವುದಾದರೆ: ಚಿತ್ರದಲ್ಲಿ ಇಬ್ಬರು ಹೆಸರಿಸಲಾದ ಮಹಿಳೆಯರು ಪುರುಷನ ಹೊರತಾಗಿ ಬೇರೊಂದು ವಿಷಯದ ಬಗ್ಗೆ
+      ಪರಸ್ಪರ ಮಾತನಾಡಬೇಕು — ಇದು ಚಿತ್ರದ ಗುಣಮಟ್ಟದ ಅಳತೆಗೋಲಲ್ಲ, ಮಹಿಳೆಯರನ್ನು ಪರದೆಯ ಮೇಲೆ ಹೇಗೆ ಬಿಂಬಿಸಲಾಗಿದೆ
+      ಎಂಬುದನ್ನು ಗಮನಿಸುವ ಒಂದು ಸಣ್ಣ ಮಾಪಕ ಅಷ್ಟೆ.
+    </p>
 
     <h2>How movies are chosen and scored</h2>
     <p>
-      Each year, five prominent Kannada film releases are reviewed against the test. Scoring is done
-      manually by watching or researching the film and recording: the named female characters, whether
-      any of them have a stated job, whether they speak to each other on screen, and whether that
-      conversation is about something other than a man. Where the answer is genuinely ambiguous, it's
-      marked "Pass (likely)" or "Fail (likely)" rather than guessed at.
+      Each year, we take the top 5 Kannada films by box office collection and review them against the
+      test. Scoring is done manually by watching or researching the film and recording: the named
+      female characters, whether any of them have a stated job, whether they speak to each other on
+      screen, and whether that conversation is about something other than a man. Where the answer is
+      genuinely ambiguous, it's marked "Pass (likely)" or "Fail (likely)" rather than guessed at.
     </p>
     <p>
       This is inherently a judgment call in places — dialogue can be brief, character intent can be
       read differently by different viewers. Corrections and disagreements are welcome; see the link
       below.
+    </p>
+
+    <h2>Why box office, specifically?</h2>
+    <p>
+      We deliberately look at the year's five biggest box-office hits rather than a curated or
+      critically-picked list, because these are the films the largest number of people actually
+      watched. They shape what mainstream Kannada audiences absorb about how women are written on
+      screen — and if on-screen representation is going to shift, it matters most in the films with
+      the widest reach, not just the ones critics or festivals single out.
+    </p>
+    <p class="kn">
+      ನಾವು ಆಯ್ದ ಅಥವಾ ವಿಮರ್ಶಕರು ಮೆಚ್ಚಿದ ಪಟ್ಟಿಗಿಂತ ಆ ವರ್ಷದ ಐದು ಅತಿ ಹೆಚ್ಚು ಬಾಕ್ಸ್ ಆಫೀಸ್ ಗಳಿಕೆಯ ಚಿತ್ರಗಳ
+      ಮೇಲೆ ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಗಮನ ಹರಿಸುತ್ತೇವೆ, ಏಕೆಂದರೆ ಇವನ್ನೇ ಅತಿ ಹೆಚ್ಚು ಜನರು ನೋಡಿರುತ್ತಾರೆ. ಪರದೆಯ ಮೇಲೆ
+      ಮಹಿಳೆಯರನ್ನು ಹೇಗೆ ಚಿತ್ರಿಸಲಾಗಿದೆ ಎಂಬುದರ ಬಗ್ಗೆ ಸಾಮಾನ್ಯ ಕನ್ನಡ ಪ್ರೇಕ್ಷಕರ ಗ್ರಹಿಕೆಯನ್ನು ಇವೇ ಚಿತ್ರಗಳು
+      ರೂಪಿಸುತ್ತವೆ. ಪ್ರಾತಿನಿಧ್ಯ ಬದಲಾಗಬೇಕಾದರೆ, ಅದು ಅತಿ ಹೆಚ್ಚು ಜನರನ್ನು ತಲುಪುವ ಚಿತ್ರಗಳಲ್ಲಿಯೇ ಮುಖ್ಯವಾಗಿ
+      ಆಗಬೇಕು, ವಿಮರ್ಶಕರು ಗುರುತಿಸುವ ಚಿತ್ರಗಳಲ್ಲಿ ಮಾತ್ರವಲ್ಲ.
     </p>
 
     <h2>Data &amp; source</h2>
@@ -55,8 +77,14 @@ import Base from "../layouts/Base.astro";
     max-width: 680px;
     padding: 48px 0 60px;
   }
-  .prose h1 { font-size: 1.8rem; margin-bottom: 8px; }
+  .prose h1 { font-size: 1.8rem; margin-bottom: 4px; }
   .prose h2 { font-size: 1.15rem; margin-top: 34px; }
   .prose p, .prose li { color: var(--muted); font-size: 0.97rem; }
   .prose a { color: var(--accent); }
+  .kn-subtitle { margin: 0 0 30px; }
+  .prose p.kn {
+    margin-top: -6px;
+    padding-left: 14px;
+    border-left: 2px solid var(--line);
+  }
 </style>

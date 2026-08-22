@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import MovieCard from "../components/MovieCard.astro";
+import ScoreOverview from "../components/ScoreOverview.astro";
 import movies from "../data/movies.json";
 
 const years = [...new Set(movies.map((m) => m.year))].sort((a, b) => b - a);
@@ -14,16 +15,21 @@ const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")
 <Base title="Kannada Bechdel Test — Top 5 Kannada Movies by Year">
   <section class="intro wrap">
     <h1>Does Kannada cinema pass the Bechdel test?</h1>
+    <p class="kn-subtitle">ಕನ್ನಡ ಚಿತ್ರರಂಗ ಬೆಕ್ ಡೆಲ್ ಟೆಸ್ಟ್ ಅನ್ನು ಪಾಸ್ ಮಾಡುತ್ತದೆಯೇ?</p>
     <p>
-      Every year we pick five prominent Kannada releases and check them against the
-      <a href="/about/">Bechdel test</a>: do at least two named women talk to each other about
-      something other than a man? Here's how {movies.length} films from {years[years.length - 1]}–{years[0]} stack up.
+      Every year we take the top 5 box-office Kannada releases and check them against
+      the{" "}<a href="/about/">Bechdel test</a>: do at least two named women talk to each other
+      about something other than a man? Here's how {movies.length} films from {years[years.length - 1]}–{years[0]} stack up.
     </p>
     <p class="stat"><strong>{passCount}</strong> of <strong>{movies.length}</strong> films pass.</p>
   </section>
 
+  <section class="wrap">
+    <ScoreOverview byYear={byYear} />
+  </section>
+
   {byYear.map(({ year, movies: yearMovies }) => (
-    <section class="year-block wrap">
+    <section class="year-block wrap" id={`y${year}`}>
       <h2>{year}</h2>
       <div class="grid">
         {yearMovies.map((movie) => <MovieCard movie={movie} />)}
@@ -39,7 +45,12 @@ const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")
   }
   .intro h1 {
     font-size: 1.9rem;
-    margin: 0 0 14px;
+    margin: 0 0 6px;
+  }
+  .kn-subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0 0 16px;
   }
   .intro p {
     color: var(--muted);
@@ -53,6 +64,7 @@ const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")
   .year-block {
     padding: 36px 0;
     border-top: 1px solid var(--line);
+    scroll-margin-top: 20px;
   }
   .year-block h2 {
     font-size: 1.4rem;

@@ -1,0 +1,122 @@
+---
+interface Movie {
+  title: string;
+  result: string;
+}
+interface YearGroup {
+  year: number;
+  movies: Movie[];
+}
+interface Props {
+  byYear: YearGroup[];
+}
+const { byYear } = Astro.props;
+
+function resultClass(result: string) {
+  const r = result.toLowerCase();
+  if (r.startsWith("pass")) return "pass";
+  if (r.includes("likely")) return "likely";
+  return "fail";
+}
+---
+<div class="overview">
+  <p class="overview-label">At a glance <span class="kn">ಒಂದೇ ನೋಟದಲ್ಲಿ</span></p>
+  {byYear.map(({ year, movies }) => {
+    const passCount = movies.filter((m) => resultClass(m.result) === "pass").length;
+    return (
+      <a class="year-row" href={`#y${year}`}>
+        <span class="year-label">{year}</span>
+        <span class="dots">
+          {movies.map((m) => (
+            <span class={`dot ${resultClass(m.result)}`} title={`${m.title}: ${m.result}`} />
+          ))}
+        </span>
+        <span class="count">{passCount}/{movies.length}</span>
+      </a>
+    );
+  })}
+  <p class="legend">
+    <span class="dot pass" /> Pass &nbsp; <span class="dot likely" /> Likely &nbsp; <span class="dot fail" /> Fail
+  </p>
+</div>
+
+<style>
+  .overview {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    background: var(--card-bg);
+  }
+  .overview-label {
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .overview-label .kn {
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .year-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 7px 0;
+    text-decoration: none;
+    color: var(--ink);
+    border-top: 1px solid var(--line);
+  }
+  .year-row:first-of-type {
+    border-top: none;
+  }
+  .year-row:hover .year-label {
+    color: var(--accent);
+  }
+  .year-label {
+    width: 42px;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .dots {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+  }
+  .dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .dot.pass { background: var(--pass-ink); }
+  .dot.fail { background: var(--fail-ink); }
+  .dot.likely { background: var(--likely-ink); }
+  .count {
+    width: 34px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .legend {
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+  }
+  .legend .dot {
+    width: 9px;
+    height: 9px;
+    margin-right: 4px;
+  }
+</style>
