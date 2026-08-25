@@ -28,14 +28,58 @@ const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")
     <ScoreOverview byYear={byYear} />
   </section>
 
-  {byYear.map(({ year, movies: yearMovies }) => (
-    <section class="year-block wrap" id={`y${year}`}>
-      <h2>{year}</h2>
-      <div class="grid">
-        {yearMovies.map((movie) => <MovieCard movie={movie} />)}
-      </div>
-    </section>
-  ))}
+  <div class="year-controls wrap">
+    <button id="toggle-all" type="button" hidden>Expand all</button>
+  </div>
+
+  {byYear.map(({ year, movies: yearMovies }) => {
+    const yearPassCount = yearMovies.filter((m) => m.result.toLowerCase().startsWith("pass")).length;
+    return (
+      <details class="year-block wrap" id={`y${year}`} open={year === years[0]}>
+        <summary>
+          <h2>{year}</h2>
+          <span class="year-meta">{yearPassCount}/{yearMovies.length} pass</span>
+          <span class="chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="grid">
+          {yearMovies.map((movie) => <MovieCard movie={movie} />)}
+        </div>
+      </details>
+    );
+  })}
+
+  <script>
+    const detailsEls = () => Array.from(document.querySelectorAll<HTMLDetailsElement>("details.year-block"));
+    const toggleBtn = document.getElementById("toggle-all");
+
+    function updateButtonLabel() {
+      if (!toggleBtn) return;
+      const allOpen = detailsEls().every((d) => d.open);
+      toggleBtn.textContent = allOpen ? "Collapse all" : "Expand all";
+      toggleBtn.hidden = false;
+    }
+
+    toggleBtn?.addEventListener("click", () => {
+      const allOpen = detailsEls().every((d) => d.open);
+      detailsEls().forEach((d) => { d.open = !allOpen; });
+      updateButtonLabel();
+    });
+
+    detailsEls().forEach((d) => d.addEventListener("toggle", updateButtonLabel));
+    updateButtonLabel();
+
+    function openFromHash() {
+      const id = location.hash.slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el instanceof HTMLDetailsElement) {
+        el.open = true;
+        updateButtonLabel();
+      }
+    }
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+  </script>
 </Base>
 
 <style>
@@ -62,15 +106,68 @@ const passCount = movies.filter((m) => m.result.toLowerCase().startsWith("pass")
     font-size: 1.05rem;
   }
   .intro .stat strong { color: var(--accent); }
+  .year-controls {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 28px;
+  }
+  .year-controls button {
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .year-controls button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
   .year-block {
-    padding-top: 36px;
+    padding-top: 20px;
     padding-bottom: 36px;
     border-top: 1px solid var(--line);
     scroll-margin-top: 20px;
   }
+  .year-block summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 0;
+    margin: -16px 0 0;
+  }
+  .year-block summary::-webkit-details-marker {
+    display: none;
+  }
+  .year-block summary:hover h2 {
+    color: var(--accent);
+  }
   .year-block h2 {
     font-size: 1.4rem;
-    margin: 0 0 18px;
+    margin: 0;
+  }
+  .year-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .chevron {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 1.3rem;
+    line-height: 1;
+    transition: transform 0.15s ease;
+  }
+  .year-block[open] .chevron {
+    transform: rotate(90deg);
+  }
+  .year-block .grid {
+    margin-top: 18px;
   }
   .grid {
     display: grid;
