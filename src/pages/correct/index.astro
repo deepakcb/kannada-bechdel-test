@@ -1,0 +1,162 @@
+---
+import Base from "../../layouts/Base.astro";
+import movies from "../../data/movies.json";
+
+const titles = [...new Set(movies.map((m) => `${m.title} (${m.year})`))];
+---
+<Base title="Suggest a correction — Kannada Bechdel Test" description="Spot something wrong? Suggest a correction to the data.">
+  <section class="wrap prose">
+    <h1>Suggest a correction</h1>
+    <p class="kn-subtitle">ತಿದ್ದುಪಡಿಯನ್ನು ಸೂಚಿಸಿ</p>
+
+    <p>
+      Every entry on this site is a manually-researched judgment call, not an official record —
+      see <a href="/about/">the methodology</a> for how scoring works. If something looks wrong,
+      tell us here. Corrections aren't applied automatically: a person reviews each submission
+      before the data changes.
+    </p>
+
+    <div id="sent-banner" class="banner success" hidden>
+      Thanks — your correction was submitted and will be reviewed.
+    </div>
+    <div id="error-banner" class="banner error" hidden>
+      Something went wrong submitting that. Please check the fields and try again, or email us directly.
+    </div>
+
+    <form method="POST" action="/api/suggest-correction" id="correction-form">
+      <div class="hp-field" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <label for="movie">Movie</label>
+      <select id="movie" name="movie" required>
+        <option value="" disabled selected>Select a movie</option>
+        {titles.map((t) => <option value={t}>{t}</option>)}
+      </select>
+
+      <label for="field">What needs correcting?</label>
+      <select id="field" name="field" required>
+        <option value="" disabled selected>Select a field</option>
+        <option>Director</option>
+        <option>Female characters</option>
+        <option>Two named women?</option>
+        <option>Jobs / occupations</option>
+        <option>Do they talk to each other?</option>
+        <option>About something other than a man?</option>
+        <option>Result (Pass/Fail)</option>
+        <option>Notes</option>
+        <option>Other</option>
+      </select>
+
+      <label for="suggestion">What should it be instead?</label>
+      <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+
+      <label for="source">Source or reference <span class="optional">(optional, but helps a lot)</span></label>
+      <input type="text" id="source" name="source" placeholder="Link to a review, clip, interview, etc." />
+
+      <label for="email">Your email</label>
+      <input type="email" id="email" name="email" required />
+      <p class="hint">
+        Used only to follow up if we have questions. Your submission, including this email, is
+        recorded in our public correction-tracking log.
+      </p>
+
+      <button type="submit">Submit correction</button>
+    </form>
+  </section>
+</Base>
+
+<script>
+  const params = new URLSearchParams(location.search);
+
+  const movieParam = params.get("movie");
+  if (movieParam) {
+    const select = document.getElementById("movie") as HTMLSelectElement | null;
+    const match = Array.from(select?.options ?? []).find((o) => o.value.startsWith(movieParam));
+    if (select && match) select.value = match.value;
+  }
+
+  const sentBanner = document.getElementById("sent-banner");
+  const errorBanner = document.getElementById("error-banner");
+  const form = document.getElementById("correction-form") as HTMLFormElement | null;
+
+  if (params.get("sent") === "1") {
+    sentBanner?.removeAttribute("hidden");
+    form?.remove();
+  }
+  if (params.get("error") === "1") {
+    errorBanner?.removeAttribute("hidden");
+  }
+</script>
+
+<style>
+  .prose {
+    max-width: 640px;
+    padding: 48px 0 60px;
+  }
+  .prose h1 { font-size: 1.8rem; margin-bottom: 4px; }
+  .kn-subtitle { color: var(--muted); margin: 0 0 24px; }
+  .prose p { color: var(--muted); font-size: 0.97rem; }
+  .prose a { color: var(--accent); }
+
+  .banner {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+  }
+  .banner.success { background: var(--pass-bg); color: var(--pass-ink); }
+  .banner.error { background: var(--fail-bg); color: var(--fail-ink); }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 28px;
+  }
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 14px;
+  }
+  label:first-of-type { margin-top: 0; }
+  .optional {
+    font-weight: 400;
+    color: var(--muted);
+  }
+  select, textarea, input[type="text"], input[type="email"] {
+    font: inherit;
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--card-bg);
+    color: var(--ink);
+  }
+  .hint {
+    font-size: 0.78rem;
+    margin: 4px 0 0;
+  }
+  button {
+    margin-top: 22px;
+    align-self: flex-start;
+    font: inherit;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.92; }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
