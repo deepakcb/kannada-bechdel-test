@@ -22,7 +22,7 @@ const { title, description = "Tracking the Bechdel test for Kannada cinema, year
         <nav>
           <a href="/">Years</a>
           <a href="/about/">About</a>
-          <a href="/correct/">Suggest a correction</a>
+          <a href="/correct/" class="correct-cta">Suggest a correction</a>
         </nav>
       </div>
     </header>
@@ -106,9 +106,20 @@ const { title, description = "Tracking the Bechdel test for Kannada cinema, year
     color: var(--ink);
   }
   .brand span { color: var(--accent); }
-  .site-header nav { display: flex; gap: 18px; font-size: 0.92rem; }
+  .site-header nav { display: flex; align-items: center; gap: 18px; font-size: 0.92rem; }
   .site-header nav a { text-decoration: none; color: var(--muted); }
   .site-header nav a:hover { color: var(--accent); }
+  .site-header nav a.correct-cta {
+    color: var(--accent);
+    font-weight: 700;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 5px 14px;
+  }
+  .site-header nav a.correct-cta:hover {
+    background: var(--accent);
+    color: white;
+  }
   main { min-height: 60vh; }
   .site-footer {
     border-top: 1px solid var(--line);

@@ -20,7 +20,10 @@ const titles = [...new Set(movies.map((m) => `${m.title} (${m.year})`))];
       Thanks — your correction was submitted and will be reviewed.
     </div>
     <div id="error-banner" class="banner error" hidden>
-      Something went wrong submitting that. Please check the fields and try again, or email us directly.
+      Something went wrong submitting that. Please check the fields and try again.
+    </div>
+    <div id="error-email-banner" class="banner error" hidden>
+      That email address doesn't look valid or able to receive mail — double-check it and try again.
     </div>
 
     <form method="POST" action="/api/suggest-correction" id="correction-form">
@@ -79,6 +82,7 @@ const titles = [...new Set(movies.map((m) => `${m.title} (${m.year})`))];
 
   const sentBanner = document.getElementById("sent-banner");
   const errorBanner = document.getElementById("error-banner");
+  const errorEmailBanner = document.getElementById("error-email-banner");
   const form = document.getElementById("correction-form") as HTMLFormElement | null;
 
   if (params.get("sent") === "1") {
@@ -87,6 +91,9 @@ const titles = [...new Set(movies.map((m) => `${m.title} (${m.year})`))];
   }
   if (params.get("error") === "1") {
     errorBanner?.removeAttribute("hidden");
+  }
+  if (params.get("error") === "email") {
+    errorEmailBanner?.removeAttribute("hidden");
   }
 </script>
 
