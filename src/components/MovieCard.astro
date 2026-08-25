@@ -12,6 +12,7 @@ interface Movie {
   conversationNotAboutMan: string;
   result: string;
   notes: string;
+  tmdbPosterPath?: string | null;
 }
 interface Props {
   movie: Movie;
@@ -21,13 +22,21 @@ const { movie } = Astro.props;
 const isPass = movie.result.toLowerCase().startsWith("pass");
 const isLikely = movie.result.toLowerCase().includes("likely");
 const badgeClass = isPass ? "pass" : isLikely ? "likely" : "fail";
+const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie.tmdbPosterPath}` : null;
 ---
 <article class="card">
   <div class="card-top">
-    <h3>{movie.title}</h3>
+    {posterUrl ? (
+      <img class="poster" src={posterUrl} alt={`${movie.title} poster`} width="46" height="69" loading="lazy" />
+    ) : (
+      <div class="poster poster-placeholder" aria-hidden="true" />
+    )}
+    <div class="heading">
+      <h3>{movie.title}</h3>
+      <p class="director">Directed by {movie.director}</p>
+    </div>
     <span class={`badge ${badgeClass}`}>{movie.result}</span>
   </div>
-  <p class="director">Directed by {movie.director}</p>
   <dl>
     <div class="row">
       <dt>Female characters</dt>
@@ -63,12 +72,27 @@ const badgeClass = isPass ? "pass" : isLikely ? "likely" : "fail";
   .card-top {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .poster {
+    flex-shrink: 0;
+    width: 46px;
+    height: 69px;
+    border-radius: 4px;
+    object-fit: cover;
+    background: var(--line);
+  }
+  .poster-placeholder {
+    border: 1px dashed var(--line);
+  }
+  .heading {
+    flex: 1;
+    min-width: 0;
   }
   h3 { margin: 0; font-size: 1.05rem; }
   .director {
-    margin: 4px 0 14px;
+    margin: 4px 0 0;
     color: var(--muted);
     font-size: 0.85rem;
   }

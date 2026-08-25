@@ -11,7 +11,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Both have jobs, but do not interact meaningfully."
+    "notes": "Both have jobs, but do not interact meaningfully.",
+    "tmdbPosterPath": "/glR6Qjw3hXB6fMYELUmEfZxK0XQ.jpg"
   },
   {
     "title": "Popcorn Monkey Tiger",
@@ -25,7 +26,8 @@
     "doTheyTalk": "Unclear/Rarely",
     "conversationNotAboutMan": "Unlikely",
     "result": "Fail",
-    "notes": "Multiple named women, but focus is on male lead; little evidence of Bechdel-passing scenes."
+    "notes": "Multiple named women, but focus is on male lead; little evidence of Bechdel-passing scenes.",
+    "tmdbPosterPath": "/958IPe2U5fSYfyG50bvKJdDLN12.jpg"
   },
   {
     "title": "Mayabazar 2016",
@@ -39,7 +41,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Female characters do not interact significantly."
+    "notes": "Female characters do not interact significantly.",
+    "tmdbPosterPath": "/3kKrUnZWHh9x88JbQUGHrK4uwjo.jpg"
   },
   {
     "title": "Gentleman",
@@ -53,7 +56,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Female roles are secondary; no meaningful interaction."
+    "notes": "Female roles are secondary; no meaningful interaction.",
+    "tmdbPosterPath": "/mzTwCl5AgWclaQ4H0h7tyFiAooD.jpg"
   },
   {
     "title": "Love Mocktail",
@@ -67,7 +71,8 @@
     "doTheyTalk": "Yes (briefly)",
     "conversationNotAboutMan": "No (mainly about male protagonist)",
     "result": "Fail",
-    "notes": "Brief interaction, but conversation centers on male lead."
+    "notes": "Brief interaction, but conversation centers on male lead.",
+    "tmdbPosterPath": "/tZyFtfXdTt5KU07GUOiW5GPhZD7.jpg"
   },
   {
     "title": "Roberrt",
@@ -81,7 +86,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Main focus is on male lead; female characters rarely interact."
+    "notes": "Main focus is on male lead; female characters rarely interact.",
+    "tmdbPosterPath": "/gBCkf1rk9KyJt9o6wC866BM6WWi.jpg"
   },
   {
     "title": "Pogaru",
@@ -95,7 +101,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Female roles are secondary; no significant interaction between them."
+    "notes": "Female roles are secondary; no significant interaction between them.",
+    "tmdbPosterPath": "/iKulrSnAylrwOvXOYmJsHGTb4r1.jpg"
   },
   {
     "title": "Kotigobba 3",
@@ -109,7 +116,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Both women have jobs but do not interact meaningfully."
+    "notes": "Both women have jobs but do not interact meaningfully.",
+    "tmdbPosterPath": "/sm1fiwP8ecOIyB5nO5Dc9l7DGd4.jpg"
   },
   {
     "title": "Yuvarathnaa",
@@ -123,7 +131,8 @@
     "doTheyTalk": "Yes (briefly)",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Brief interaction, but conversation centers on male protagonist."
+    "notes": "Brief interaction, but conversation centers on male protagonist.",
+    "tmdbPosterPath": "/1UakdDY2Pyo6uwUdIRSHgsIbV5Q.jpg"
   },
   {
     "title": "Salaga",
@@ -137,7 +146,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Focus on crime and male lead; female-female interaction minimal."
+    "notes": "Focus on crime and male lead; female-female interaction minimal.",
+    "tmdbPosterPath": "/c9wX2wGrmMigiNlSw2624jtB3pN.jpg"
   },
   {
     "title": "KGF: Chapter 2",
@@ -151,7 +161,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "No significant interaction between the two women."
+    "notes": "No significant interaction between the two women.",
+    "tmdbPosterPath": "/khNVygolU0TxLIDWff5tQlAhZ23.jpg"
   },
   {
     "title": "Kantara",
@@ -165,7 +176,8 @@
     "doTheyTalk": "Unclear/Rarely",
     "conversationNotAboutMan": "Unlikely",
     "result": "Fail",
-    "notes": "Leela and Devakka rarely interact, and not about non-male topics."
+    "notes": "Leela and Devakka rarely interact, and not about non-male topics.",
+    "tmdbPosterPath": "/jIsKmkxMzdCZ0Ux1GVSnu8m6Na6.jpg"
   },
   {
     "title": "Vikrant Rona",
@@ -179,7 +191,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "No meaningful interaction between female characters."
+    "notes": "No meaningful interaction between female characters.",
+    "tmdbPosterPath": "/jq1yH1pT8VMZONLMTgOFUDgitNh.jpg"
   },
   {
     "title": "777 Charlie",
@@ -193,7 +206,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "No interaction between the two female characters."
+    "notes": "No interaction between the two female characters.",
+    "tmdbPosterPath": "/qArPmXH0aWsT3SEtYl8XrU2Oz48.jpg"
   },
   {
     "title": "Vedha",
@@ -207,7 +221,8 @@
     "doTheyTalk": "Yes",
     "conversationNotAboutMan": "Sometimes",
     "result": "Pass (likely)",
-    "notes": "Multiple named women with jobs; some conversations not about men."
+    "notes": "Multiple named women with jobs; some conversations not about men.",
+    "tmdbPosterPath": "/6QgxYSgcBSd5jbdUqzvSefPzO96.jpg"
   },
   {
     "title": "Kaatera",
@@ -221,7 +236,8 @@
     "doTheyTalk": "Unclear/Rarely",
     "conversationNotAboutMan": "Unlikely",
     "result": "Fail",
-    "notes": "Focus is on male lead and farmer issues; female interactions are minimal."
+    "notes": "Focus is on male lead and farmer issues; female interactions are minimal.",
+    "tmdbPosterPath": "/iP7pN1Y9OBE2D9unv2Bfwv8c3R1.jpg"
   },
   {
     "title": "Kranti",
@@ -235,7 +251,8 @@
     "doTheyTalk": "Yes (briefly)",
     "conversationNotAboutMan": "No (mainly about male lead/schools)",
     "result": "Fail",
-    "notes": "Interactions are about the protagonist or school issues led by male character."
+    "notes": "Interactions are about the protagonist or school issues led by male character.",
+    "tmdbPosterPath": "/sQSUpdPwzby0c6hG5ViN3iQnchx.jpg"
   },
   {
     "title": "Kabzaa",
@@ -249,7 +266,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Female characters rarely interact; focus is on underworld/male leads."
+    "notes": "Female characters rarely interact; focus is on underworld/male leads.",
+    "tmdbPosterPath": "/vFpw8DbiGdhrqcvzpuiuRQBZJPb.jpg"
   },
   {
     "title": "Ghost",
@@ -263,7 +281,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Action thriller with limited female roles and little interaction between women."
+    "notes": "Action thriller with limited female roles and little interaction between women.",
+    "tmdbPosterPath": null
   },
   {
     "title": "Sapta Sagaradaache Ello: Side A",
@@ -277,7 +296,8 @@
     "doTheyTalk": "Yes (briefly)",
     "conversationNotAboutMan": "No (mainly about male lead/relationships)",
     "result": "Fail",
-    "notes": "Conversations are centered on the male protagonist and relationships."
+    "notes": "Conversations are centered on the male protagonist and relationships.",
+    "tmdbPosterPath": "/qjvSMN5dhSh7cymjj6if2aJ4ejW.jpg"
   },
   {
     "title": "Max",
@@ -291,7 +311,8 @@
     "doTheyTalk": "Unclear",
     "conversationNotAboutMan": "Unclear",
     "result": "Fail (likely)",
-    "notes": "Action-centric, focus on male lead; little info on female-female interaction."
+    "notes": "Action-centric, focus on male lead; little info on female-female interaction.",
+    "tmdbPosterPath": "/wrkPOgbJpqCRqY0Z8cbltxLGwzl.jpg"
   },
   {
     "title": "UI",
@@ -305,7 +326,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Dystopian sci-fi, main female roles revolve around male protagonist."
+    "notes": "Dystopian sci-fi, main female roles revolve around male protagonist.",
+    "tmdbPosterPath": "/tWoeysV4ro6wn4TE0QgqMuo6Val.jpg"
   },
   {
     "title": "Bagheera",
@@ -319,7 +341,8 @@
     "doTheyTalk": "Unclear",
     "conversationNotAboutMan": "Unclear",
     "result": "Fail (likely)",
-    "notes": "Thriller; female characters exist but interactions are limited."
+    "notes": "Thriller; female characters exist but interactions are limited.",
+    "tmdbPosterPath": "/oW3iHFiXpfRXXQJiSXScNFEBf7h.jpg"
   },
   {
     "title": "Bheema",
@@ -333,7 +356,8 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "Action drama, focus on male protagonist; little evidence of Bechdel-passing scenes."
+    "notes": "Action drama, focus on male protagonist; little evidence of Bechdel-passing scenes.",
+    "tmdbPosterPath": "/nv8rsLyTQldLdFdcglMLFkCeZEz.jpg"
   },
   {
     "title": "Martin",
@@ -347,6 +371,7 @@
     "doTheyTalk": "No",
     "conversationNotAboutMan": "No",
     "result": "Fail",
-    "notes": "High-octane action, female roles secondary to male lead, no significant interaction."
+    "notes": "High-octane action, female roles secondary to male lead, no significant interaction.",
+    "tmdbPosterPath": "/rmCJCFrEwPC0u0Y1smihwDo4Cf1.jpg"
   }
 ]
