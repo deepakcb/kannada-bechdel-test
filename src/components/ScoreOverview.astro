@@ -36,7 +36,9 @@ function resultClass(result: string) {
     );
   })}
   <p class="legend">
-    <span class="dot pass" /> Pass &nbsp; <span class="dot likely" /> Likely &nbsp; <span class="dot fail" /> Fail
+    <span class="legend-item"><span class="dot pass" />Pass</span>
+    <span class="legend-item"><span class="dot likely" />Likely</span>
+    <span class="legend-item"><span class="dot fail" />Fail</span>
   </p>
 </div>
 
@@ -112,11 +114,17 @@ function resultClass(result: string) {
     font-size: 0.78rem;
     color: var(--muted);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 16px;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
   }
   .legend .dot {
     width: 9px;
     height: 9px;
-    margin-right: 4px;
   }
 </style>
