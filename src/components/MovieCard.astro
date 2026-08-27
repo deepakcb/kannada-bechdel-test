@@ -23,11 +23,22 @@ const isPass = movie.result.toLowerCase().startsWith("pass");
 const isLikely = movie.result.toLowerCase().includes("likely");
 const badgeClass = isPass ? "pass" : isLikely ? "likely" : "fail";
 const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie.tmdbPosterPath}` : null;
+const posterSrcset = movie.tmdbPosterPath
+  ? `https://image.tmdb.org/t/p/w92${movie.tmdbPosterPath} 1x, https://image.tmdb.org/t/p/w154${movie.tmdbPosterPath} 2x`
+  : undefined;
+
+function indicator(value: string): "yes" | "no" | "unclear" {
+  const v = value.toLowerCase();
+  if (v.startsWith("yes")) return "yes";
+  if (v.startsWith("no")) return "no";
+  return "unclear";
+}
+const indicatorGlyph = { yes: "✓", no: "✕", unclear: "–" };
 ---
 <article class="card">
   <div class="card-top">
     {posterUrl ? (
-      <img class="poster" src={posterUrl} alt={`${movie.title} poster`} width="46" height="69" loading="lazy" />
+      <img class="poster" src={posterUrl} srcset={posterSrcset} alt={`${movie.title} poster`} width="46" height="69" loading="lazy" />
     ) : (
       <div class="poster poster-placeholder" aria-hidden="true" />
     )}
@@ -47,7 +58,7 @@ const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie
     </div>
     <div class="row">
       <dt>Two named women?</dt>
-      <dd>{movie.twoNamedWomen}</dd>
+      <dd><span class={`indicator ${indicator(movie.twoNamedWomen)}`} aria-hidden="true">{indicatorGlyph[indicator(movie.twoNamedWomen)]}</span>{movie.twoNamedWomen}</dd>
     </div>
     <div class="row">
       <dt>Jobs</dt>
@@ -55,11 +66,11 @@ const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie
     </div>
     <div class="row">
       <dt>Do they talk to each other?</dt>
-      <dd>{movie.doTheyTalk}</dd>
+      <dd><span class={`indicator ${indicator(movie.doTheyTalk)}`} aria-hidden="true">{indicatorGlyph[indicator(movie.doTheyTalk)]}</span>{movie.doTheyTalk}</dd>
     </div>
     <div class="row">
       <dt>About something other than a man?</dt>
-      <dd>{movie.conversationNotAboutMan}</dd>
+      <dd><span class={`indicator ${indicator(movie.conversationNotAboutMan)}`} aria-hidden="true">{indicatorGlyph[indicator(movie.conversationNotAboutMan)]}</span>{movie.conversationNotAboutMan}</dd>
     </div>
   </dl>
   {movie.notes && <p class="notes">{movie.notes}</p>}
@@ -74,6 +85,12 @@ const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 18px 20px;
+    box-shadow: 0 1px 2px rgba(20, 14, 4, 0.04);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover {
+    box-shadow: 0 6px 16px rgba(20, 14, 4, 0.08);
+    transform: translateY(-2px);
   }
   .card-top {
     display: flex;
@@ -127,6 +144,23 @@ const posterUrl = movie.tmdbPosterPath ? `https://image.tmdb.org/t/p/w154${movie
     font-weight: 600;
     border: 1px solid var(--line);
   }
+  .indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 0.6rem;
+    font-weight: 700;
+    margin-right: 6px;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+  }
+  .indicator.yes { background: var(--pass-bg); color: var(--pass-ink); }
+  .indicator.no { background: var(--fail-bg); color: var(--fail-ink); }
+  .indicator.unclear { background: var(--likely-bg); color: var(--likely-ink); }
   dl { margin: 0; }
   .row {
     display: grid;
